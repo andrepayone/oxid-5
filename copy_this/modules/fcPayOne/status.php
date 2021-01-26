@@ -309,6 +309,25 @@ class fcPayOneTransactionStatusHandler extends oxBase {
                     ";
                     oxDb::getDb()->Execute($query);
                 }
+                // OXID-337 : handle appointed for orders in error status
+                if ($this->fcGetPostParam('txaction') == 'appointed') {
+                    $oLang = oxNew('oxLang');
+                    $sReplacement = $oLang->translateString('FCPO_REMARK_APPOINTED_MISSING');
+
+                    $sQuery = "
+                        UPDATE 
+                            oxorder 
+                        SET 
+                            oxfolder = 'ORDERFOLDER_NEW', 
+                            oxtransstatus = 'OK',
+                            oxremark = REPLACE(oxremark, '".$sReplacement."', '')
+                        WHERE 
+                            oxid = '{$sOrderId}' AND 
+                            oxtransstatus IN ('ERROR') AND 
+                            oxfolder = 'ORDERFOLDER_PROBLEMS'
+                    ";
+                    oxDb::getDb()->Execute($sQuery);
+                }
 
                 $this->_handleMapping($oOrder);
                 $this->_handleNotification($oOrder);
