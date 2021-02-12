@@ -41,7 +41,7 @@ class fcporatepay extends oxBase {
     }
     
     /**
-     * Add/Update RatePay profile
+     * Add/Update Ratepay profile
      * 
      * @param array $aRatepayData
      * @return void
@@ -69,7 +69,7 @@ class fcporatepay extends oxBase {
     }
     
     /**
-     * Returns an array with RatePay profiles
+     * Returns an array with Ratepay profiles
      * 
      * @param string $sPaymentId (optional)
      * @return void
@@ -100,7 +100,7 @@ class fcporatepay extends oxBase {
     
     
     /**
-     * Add RatePay shop
+     * Add Ratepay shop
      * 
      * @param void
      * @return void

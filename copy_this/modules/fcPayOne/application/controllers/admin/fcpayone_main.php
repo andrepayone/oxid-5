@@ -405,7 +405,7 @@ class fcpayone_main extends fcpayone_admindetails {
     }
     
     /**
-     * Insert RatePay profile
+     * Insert Ratepay profile
      * 
      * @param void
      *  @return void
@@ -433,7 +433,7 @@ class fcpayone_main extends fcpayone_admindetails {
     }
 
     /**
-     * Check and add a new RatePay Profile
+     * Check and add a new Ratepay Profile
      * 
      * @param void
      * @return void
