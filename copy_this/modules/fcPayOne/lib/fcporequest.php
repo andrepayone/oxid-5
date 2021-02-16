@@ -126,7 +126,7 @@ class fcpoRequest extends oxSuperCfg {
     protected $_sApiVersion = '3.10';
     
     /**
-     * List of RatePay related payment Ids
+     * List of Ratepay related payment Ids
      * @var array
      */
     protected $_aRatePayPayents = array(
@@ -2365,7 +2365,7 @@ class fcpoRequest extends oxSuperCfg {
     }
 
     /**
-     * Adds RatePay specific parameters
+     * Adds Ratepay specific parameters
      *
      * @param type $oOrder
      * @return void
