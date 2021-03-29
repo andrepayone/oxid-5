@@ -1,3 +1,26 @@
+==2.6.0==
+
+New Features
+ 
+* new payment method: WeChatPay
+* new payment method: Trustly
+* new payment method: Alipay
+* re-introduced credit card holder field for better acceptance when in scope for 3D Secure 2.0. 
+We had previously disabled it to streamline the amount of fields a customer had to fill by default. With PSD2 and 3D Secure 2.0 in effect, we saw that using the cardholder field can benefit the ratio of frictionless payments vs. leaving it out.
+ 
+Bugfix(es)
+ 
+* fixed error in config export xml
+* fixed timeout issues when forwarding txstatus messages
+* fixed overrides of order email template when not using PAYONE payment methods (boo!)
+* smaller fixes
+ 
+Maintenance
+ 
+* tested with
+* updated legal texts for Ratepay
+* Rebranded "RatePay" to "Ratepay"
+
 ==2.5.1==
 
 New Feature(s)
