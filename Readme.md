@@ -14,7 +14,7 @@ The Payone-Payment-Module is already certified by OXID to guarantee faultless co
 *	Find all currently supported payment methods on https://docs.payone.com/display/public/INT/Oxid+5+Extension
 
 ## More information
-More information about OXID on https://www.payone.com/oxid or https://www.fatchip.de/Plugins/OXID-eShop/OXID-PAYONE-Connector.html<br>
+More information about OXID on https://docs.payone.com/display/public/INT/Oxid+5+Extension or https://www.fatchip.de/Plugins/OXID-eShop/OXID-PAYONE-Connector.html<br>
 Videoguide: Installation and configuration (German): https://www.youtube.com/playlist?list=PLlzKa20PSzulrW3Yg7XmP3rkvDywe-DMe 
 
 ## Requirements
