@@ -115,7 +115,7 @@ Office Kiel
 Fraunhoferstraße 2–4  
 24118 Kiel, Germany  
 Phone +49 431 25968-400  
-shopware@payone.com
+oxid@payone.com
 
 ## License
 
