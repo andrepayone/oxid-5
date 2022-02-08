@@ -11,10 +11,10 @@ The Payone-Payment-Module is already certified by OXID to guarantee faultless co
 *	The offered portfolio of payment options can be controlled depending on the consumer's credit rating
 *	The payment extension is compatible with all OXID eShop editions of version 4: Community, Professional and Enterprise edition
 *	Supports simplified PCI DSS conformity in accordance with SAQ A
-*	Find all currently supported payment methods on https://docs.payone.com/display/public/INT/Oxid+5
+*	Find all currently supported payment methods on https://docs.payone.com/display/public/INT/Oxid+5+Extension
 
 ## More information
-More information about OXID on https://docs.payone.com/display/public/INT/Oxid+5 or https://www.fatchip.de/Plugins/OXID-eShop/OXID-PAYONE-Connector.html<br>
+More information about OXID on https://docs.payone.com/display/public/INT/Oxid+5+Extension or https://www.fatchip.de/Plugins/OXID-eShop/OXID-PAYONE-Connector.html<br>
 Videoguide: Installation and configuration (German): https://www.youtube.com/playlist?list=PLlzKa20PSzulrW3Yg7XmP3rkvDywe-DMe 
 
 ## Requirements
