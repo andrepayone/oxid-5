@@ -44,7 +44,6 @@ class fcPayOnePayment extends fcPayOnePayment_parent {
         'fcpocreditcard',
         'fcpopaypal',
         'fcpopaypal_express',
-        'fcpoklarna',
         'fcpoklarna_invoice',
         'fcpoklarna_installments',
         'fcpoklarna_directdebit',
@@ -81,10 +80,8 @@ class fcPayOnePayment extends fcPayOnePayment_parent {
      * @var array
      */
     protected static $_aRedirectPayments = array(
-        'fcpoonlineueberweisung',
         'fcpopaypal',
         'fcpopaypal_express',
-        'fcpoklarna',
         'fcpoklarna_invoice',
         'fcpoklarna_installments',
         'fcpoklarna_directdebit',

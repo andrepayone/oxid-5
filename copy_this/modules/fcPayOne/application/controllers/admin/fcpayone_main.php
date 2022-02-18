@@ -647,7 +647,6 @@ class fcpayone_main extends fcpayone_admindetails {
             'fcpoinvoice' => 'rec',
             'fcpopaypal' => 'wlt',
             'fcpopaypal_express' => 'wlt',
-            'fcpoklarna' => 'fnc',
             'fcpoklarna_invoice' => 'fnc',
             'fcpoklarna_installments' => 'fnc',
             'fcpoklarna_directdebit' => 'fnc',
