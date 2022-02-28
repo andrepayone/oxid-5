@@ -360,7 +360,7 @@ class fcpayone_events
         'fcpopaydirekt_express' => 'PAYONE Paydirekt Express',
         'fcpo_sofort' => 'PAYONE Sofort Überweisung',
         'fcpo_giropay' => 'PAYONE Giropay',
-        'fcpo_eps' => 'PAYONE eps',
+        'fcpo_eps' => 'PAYONE eps Überweisung',
         'fcpo_pf_finance' => 'PAYONE PostFinance E-Finance',
         'fcpo_pf_card' => 'PAYONE PostFinance Card',
         'fcpo_ideal' => 'PAYONE iDEAL',
