@@ -11,10 +11,10 @@ The Payone-Payment-Module is already certified by OXID to guarantee faultless co
 *	The offered portfolio of payment options can be controlled depending on the consumer's credit rating
 *	The payment extension is compatible with all OXID eShop editions of version 4: Community, Professional and Enterprise edition
 *	Supports simplified PCI DSS conformity in accordance with SAQ A
-*	Find all currently supported payment methods on www.payone.com/oxid
+*	Find all currently supported payment methods on https://docs.payone.com/display/public/INT/Oxid+5+Extension
 
 ## More information
-More information about OXID on https://www.payone.com/oxid or https://www.fatchip.de/Plugins/OXID-eShop/OXID-PAYONE-Connector.html<br>
+More information about OXID on https://docs.payone.com/display/public/INT/Oxid+5+Extension or https://www.fatchip.de/Plugins/OXID-eShop/OXID-PAYONE-Connector.html<br>
 Videoguide: Installation and configuration (German): https://www.youtube.com/playlist?list=PLlzKa20PSzulrW3Yg7XmP3rkvDywe-DMe 
 
 ## Requirements
@@ -108,6 +108,15 @@ If you updating from version 2.x or higher:
 ## Notice
 When you are using the creditcard iframe payment-method there is no transaction-id ( txid ) in the moment where the order is created. The transaction-id will be filled in seconds later, when the first "TransactionStatus" from Payone comes in. So when using pixi or another ERP where the transaction-id is needed, make sure to export the order only when the transaction-id is already there.
 
-## About PAYONE
-PAYONE provides business solutions for comprehensive automated processing of all payments in e-commerce. The payment service provider is part of the Sparkassen-Finanzgruppe and authorised as a credit institution by the German Federal Financial Supervisory Authority. PAYONE's service portfolio includes acceptance and processing for national and international payment methods, plus all payment services. Standardised interfaces and extensions allow simple integration into existing e-commerce and IT-systems whilst maintaining strict security standards.<br>
-PAYONE ranks amongst the 50 fastest-growing technology companies in Germany and serves over 4.00 e-commerce clients from a variety of sectors and countries, including well-known companies such as Immonet, Globetrotter Ausrüstung, HD PLUS, Fujitsu, Zalando, Hawesko, Sony Music and Hallhuber. PAYONE employs a workforce of over 150.
+## Support and Contact
+
+PAYONE GmbH  
+Office Kiel  
+Fraunhoferstraße 2–4  
+24118 Kiel, Germany  
+Phone +49 431 25968-400  
+oxid@payone.com
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
