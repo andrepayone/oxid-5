@@ -366,9 +366,9 @@ class fcpayone_events
         'fcpo_ideal' => 'PAYONE iDEAL',
         'fcpo_p24' => 'PAYONE Przelewy24',
         'fcpo_bancontact' => 'PAYONE Bancontact',
-        'fcpo_alipay' => 'PAYONE Alipay',
         'fcpo_trustly' => 'PAYONE Trustly',
         'fcpo_wechatpay'=> 'PAYONE WeChat Pay',
+        'fcpo_alipay' => 'PAYONE Alipay',
     );
 
     /**
