@@ -9,14 +9,14 @@
         <link href="[{$oViewConf->fcpoGetModuleCssPath('lightview.css')}]" rel="stylesheet">
         <script src="[{$oViewConf->fcpoGetModuleJsPath('jquery-1.10.1.min.js')}]"></script>
         <script src="[{$oViewConf->fcpoGetModuleJsPath()}]lightview/lightview.js"></script>
-        <ul class="form">
-            <li id="fcpo_elv_error">
+        <ul class="form" style="width: auto;">
+            <li id="fcpo_elv_error" style="width: auto;">
                 <div class="oxValidateError" style="display: block;padding: 0;">
                     [{oxmultilang ident="FCPO_ERROR"}]<div id="fcpo_elv_error_content"></div>
                 </div>
             </li>
             [{if $oView->fcpoShowPayolutionB2C()}]
-                <li>
+                <li style="width: auto;">
                     <label>[{oxmultilang ident="FCPO_PAYOLUTION_BIRTHDATE"}]</label>
                     <select name="dynvalue[fcpo_payolution_debitnote_birthdate_day]">
                         [{foreach from=$oView->fcpoGetDayRange() item='sDay'}]
@@ -37,11 +37,11 @@
                     </select>
                 </li>
             [{/if}]
-            <li>
+            <li style="width: auto;">
                 <label>[{oxmultilang ident="FCPO_PAYOLUTION_ACCOUNTHOLDER"}]</label>
                 <input autocomplete="off" type="text" size="20" maxlength="64" name="dynvalue[fcpo_payolution_debitnote_accountholder]" value="[{$dynvalue.fcpo_payolution_debitnote_accountholder}]" onkeyup="fcHandleDebitInputs();return false;">
             </li>
-            <li>
+            <li style="width: auto;">
                 <label>[{oxmultilang ident="FCPO_BANK_IBAN"}]</label>
                 <input autocomplete="off" type="text" size="20" maxlength="64" name="dynvalue[fcpo_payolution_debitnote_iban]" value="[{$dynvalue.fcpo_payolution_debitnote_iban}]" onkeyup="fcHandleDebitInputs();return false;">
                 <div id="fcpo_payolution_iban_invalid" class="fcpo_check_error">
@@ -50,7 +50,7 @@
                     </p>
                 </div>
             </li>
-            <li>
+            <li style="width: auto;">
                 <label>[{oxmultilang ident="FCPO_BANK_BIC"}]</label>
                 <input autocomplete="off" type="text" size="20" maxlength="64" name="dynvalue[fcpo_payolution_debitnote_bic]" value="[{$dynvalue.fcpo_payolution_debitnote_bic}]" onkeyup="fcHandleDebitInputs();return false;">
                 <div id="fcpo_payolution_bic_invalid" class="fcpo_check_error">
@@ -59,10 +59,10 @@
                     </p>
                 </div>
             </li>
-            <li>
+            <li style="width: auto;">
                 <input id="fcpo_payolution_debitnote_agreed" name="dynvalue[fcpo_payolution_debitnote_agreed]" value="agreed" type="checkbox" onchange="fcpoGetPaySafeFraudSnippet('fcpo_payolution_debitnote_agreed', 'paysafe_fraud_prevention_debitnote')">&nbsp;[{oxmultilang ident="FCPO_PAYOLUTION_AGREEMENT_PART_1"}] <a href='[{$oView->fcpoGetPayolutionAgreementLink()}]' class="lightview fcpoPayolutionAgreeRed" data-lightview-type="iframe" data-lightview-options="width: 800, height: 600, viewport: 'scale',background: { color: '#fff', opacity: 1 },skin: 'light'">[{oxmultilang ident="FCPO_PAYOLUTION_AGREE"}]</a> [{oxmultilang ident="FCPO_PAYOLUTION_AGREEMENT_PART_2"}]
             </li>
-            <li>
+            <li style="width: auto;">
                 <input name="dynvalue[fcpo_payolution_debitnote_sepa_agreed]" value="agreed" type="checkbox">&nbsp;[{oxmultilang ident="FCPO_PAYOLUTION_SEPA_AGREEMENT_PART_1"}] <a href='[{$oView->fcpoGetPayolutionSepaAgreementLink()}]' class="lightview fcpoPayolutionAgreeRed" data-lightview-type="iframe" data-lightview-options="width: 800, height: 600, viewport: 'scale',background: { color: '#fff', opacity: 1 },skin: 'light'">[{oxmultilang ident="FCPO_PAYOLUTION_SEPA_AGREE"}]</a>
             </li>
         </ul>

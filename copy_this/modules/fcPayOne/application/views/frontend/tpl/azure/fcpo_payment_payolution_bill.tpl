@@ -9,9 +9,9 @@
         <link href="[{$oViewConf->fcpoGetModuleCssPath('lightview.css')}]" rel="stylesheet">
         <script src="[{$oViewConf->fcpoGetModuleJsPath('jquery-1.10.1.min.js')}]"></script>
         <script src="[{$oViewConf->fcpoGetModuleJsPath()}]lightview/lightview.js"></script>
-        <ul class="form">
+        <ul class="form" style="width: auto;">
             [{if $oView->fcpoShowPayolutionB2C()}]
-                <li>
+                <li style="width: auto;">
                     <label>[{oxmultilang ident="FCPO_PAYOLUTION_BIRTHDATE"}]</label>
                     <select name="dynvalue[fcpo_payolution_bill_birthdate_day]">
                         [{foreach from=$oView->fcpoGetDayRange() item='sDay'}]
@@ -33,7 +33,7 @@
                 </li>
             [{/if}]
             [{if $oView->fcpoPayolutionBillTelephoneRequired()}]
-                <li>
+                <li style="width: auto;">
                     <label>[{oxmultilang ident="FCPO_PAYOLUTION_PHONE"}]</label>
                     <input type="text" size="20" maxlength="64" name="dynvalue[fcpo_payolution_bill_oxfon]" value="[{$oView->fcpoGetUserValue('oxfon')}]">
                 </li>
