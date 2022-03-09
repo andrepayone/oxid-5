@@ -340,7 +340,7 @@ class fcpayone_events
     public static $sQueryChangeRefNrToVarchar = "ALTER TABLE oxorder CHANGE FCPOREFNR FCPOREFNR VARCHAR( 32 ) NOT NULL DEFAULT '0'";
     public static $aPaymentMethods = array(
         'fcpoinvoice' => 'PAYONE Rechnungskauf',
-        'fcpopayadvance' => 'PAYONE Vorauskasse',
+        'fcpopayadvance' => 'PAYONE Vorkasse',
         'fcpodebitnote' => 'PAYONE Lastschrift',
         'fcpocashondel' => 'PAYONE Nachnahme',
         'fcpocreditcard' => 'PAYONE Kreditkarte',
@@ -357,7 +357,7 @@ class fcpayone_events
         'fcporp_bill' => 'PAYONE Ratepay Rechnungskauf',
         'fcpoamazonpay' => 'PAYONE Amazon Pay',
         'fcpo_secinvoice' => 'PAYONE Gesicherter Rechnungskauf',
-        'fcpopaydirekt_express' => 'PAYONE Paydirekt Express',
+        'fcpopaydirekt_express' => 'PAYONE paydirekt Express',
         'fcpo_sofort' => 'PAYONE Sofort Überweisung',
         'fcpo_giropay' => 'PAYONE Giropay',
         'fcpo_eps' => 'PAYONE eps Überweisung',

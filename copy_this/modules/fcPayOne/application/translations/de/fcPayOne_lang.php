@@ -214,6 +214,38 @@ $aLang = array(
     // missing in order email to shop owner
     'EMAIL_ORDER_CUST_HTML_PLUSTAX1'                              => "zzgl. MwSt.",
     'SHIPPING_VAT2'                                               => "% Betrag",
+
+    'PAYONE Alipay' => 'PAYONE Alipay',
+    'PAYONE Amazon Pay' => 'PAYONE Amazon Pay',
+    'PAYONE Bancontact' => 'PAYONE Bancontact',
+    'PAYONE Barzahlen' => 'PAYONE Barzahlen',
+    'PAYONE eps Überweisung' => 'PAYONE eps Überweisung',
+    'PAYONE Gesicherter Rechnungskauf' => 'PAYONE Gesicherter Rechnungskauf',
+    'PAYONE Giropay' => 'PAYONE Giropay',
+    'PAYONE iDEAL' => 'PAYONE iDEAL',
+    'PAYONE Klarna Ratenkauf' => 'PAYONE Klarna Ratenkauf',
+    'PAYONE Klarna Rechnung' => 'PAYONE Klarna Rechnung',
+    'PAYONE Klarna Sofort bezahlen' => 'PAYONE Klarna Sofort bezahlen',
+    'PAYONE Kreditkarte' => 'PAYONE Kreditkarte',
+    'PAYONE Lastschrift' => 'PAYONE Lastschrift',
+    'PAYONE Nachnahme' => 'PAYONE Nachnahme',
+    'PAYONE paydirekt Express' => 'PAYONE paydirekt Express',
+    'PAYONE paydirekt' => 'PAYONE paydirekt',
+    'PAYONE PayPal Express' => 'PAYONE PayPal Express',
+    'PAYONE PayPal' => 'PAYONE PayPal',
+    'PAYONE PostFinance Card' => 'PAYONE PostFinance Card',
+    'PAYONE PostFinance E-Finance' => 'PAYONE PostFinance E-Finance',
+    'PAYONE Przelewy24' => 'PAYONE Przelewy24',
+    'PAYONE Ratepay Rechnungskauf' => 'PAYONE Ratepay Rechnungskauf',
+    'PAYONE Rechnungskauf' => 'PAYONE Rechnungskauf',
+    'PAYONE Sofort Überweisung' => 'PAYONE Sofort Überweisung',
+    'PAYONE Trustly' => 'PAYONE Trustly',
+    'PAYONE Unzer Lastschrift' => 'PAYONE Unzer Lastschrift',
+    'PAYONE Unzer Ratenkauf' => 'PAYONE Unzer Ratenkauf',
+    'PAYONE Unzer Rechnungskauf' => 'PAYONE Unzer Rechnungskauf',
+    'PAYONE Vorkasse' => 'PAYONE Vorkasse',
+    'PAYONE WeChat Pay' => 'PAYONE WeChat Pay',
+
 );
 
 /*
