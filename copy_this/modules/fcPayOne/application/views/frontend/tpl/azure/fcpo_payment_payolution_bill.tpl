@@ -9,9 +9,9 @@
         <link href="[{$oViewConf->fcpoGetModuleCssPath('lightview.css')}]" rel="stylesheet">
         <script src="[{$oViewConf->fcpoGetModuleJsPath('jquery-1.10.1.min.js')}]"></script>
         <script src="[{$oViewConf->fcpoGetModuleJsPath()}]lightview/lightview.js"></script>
-        <ul class="form">
+        <ul class="form" style="width: auto;">
             [{if $oView->fcpoShowPayolutionB2C()}]
-                <li>
+                <li style="width: auto;">
                     <label>[{oxmultilang ident="FCPO_PAYOLUTION_BIRTHDATE"}]</label>
                     <select name="dynvalue[fcpo_payolution_bill_birthdate_day]">
                         [{foreach from=$oView->fcpoGetDayRange() item='sDay'}]
@@ -33,12 +33,12 @@
                 </li>
             [{/if}]
             [{if $oView->fcpoPayolutionBillTelephoneRequired()}]
-                <li>
+                <li style="width: auto;">
                     <label>[{oxmultilang ident="FCPO_PAYOLUTION_PHONE"}]</label>
                     <input type="text" size="20" maxlength="64" name="dynvalue[fcpo_payolution_bill_oxfon]" value="[{$oView->fcpoGetUserValue('oxfon')}]">
                 </li>
             [{/if}]
-            <li>
+            <li style="width: auto;">
                 <input id="fcpo_payolution_bill_agreed" name="dynvalue[fcpo_payolution_bill_agreed]" value="agreed" type="checkbox" onchange="fcpoGetPaySafeFraudSnippet('fcpo_payolution_bill_agreed', 'paysafe_fraud_prevention_bill')">&nbsp;[{oxmultilang ident="FCPO_PAYOLUTION_AGREEMENT_PART_1"}] <a href='[{$oView->fcpoGetPayolutionAgreementLink()}]' class="lightview fcpoPayolutionAgreeRed" data-lightview-type="iframe" data-lightview-options="width: 800, height: 600, viewport: 'scale',background: { color: '#fff', opacity: 1 },skin: 'light'">[{oxmultilang ident="FCPO_PAYOLUTION_AGREE"}]</a> [{oxmultilang ident="FCPO_PAYOLUTION_AGREEMENT_PART_2"}]
             </li>
         </ul>
