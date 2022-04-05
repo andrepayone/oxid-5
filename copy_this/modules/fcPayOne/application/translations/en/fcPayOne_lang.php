@@ -239,6 +239,7 @@ $aLang = array(
     'PAYONE Unzer Rechnungskauf' => 'PAYONE Unzer Rechnungskauf',
     'PAYONE Vorkasse' => 'PAYONE prepayment',
     'PAYONE WeChat Pay' => 'PAYONE WeChat Pay',
+    'FCPO_KLARNA' => 'PAYONE Klarna Payments',
 );
 
 /*
