@@ -67,7 +67,7 @@
                             [{block name="mb_select_payment_dropdown"}]
                             [{assign var=sPaymentName value=$paymentmethod->oxpayments__oxdesc->value}]
                             <li class="dropdown-option">
-                                <a tabindex="-1" data-selection-id="[{$sPaymentID}]">[{$sPaymentName}]</a>
+                                <a tabindex="-1" data-selection-id="[{$sPaymentID}]">[{oxmultilang ident=$sPaymentName}]</a>
                             </li>
                             [{if $oView->getCheckedPaymentId() == $paymentmethod->oxpayments__oxid->value}]
                                 [{oxscript add="$('#sPaymentSelected').val('$sPaymentID');"}]
