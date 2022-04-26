@@ -1893,6 +1893,61 @@ class fcpoRequest extends oxSuperCfg {
         return $this->send();
     }
 
+
+    /**
+     * Requests payone merchant configuration
+     *
+     * @param string
+     * @return array
+     */
+    public function sendRequestGetPayoneMerchantSetup($mode) {
+        $oConfig = $this->_oFcpoHelper->fcpoGetConfig();
+
+        $this->addParameter('request', 'genericpayment');
+        $this->addParameter('mode', $mode);
+        $this->addParameter('aid', $oConfig->getConfigParam('sFCPOSubAccountID')); //ID of PayOne Sub-Account
+
+        $this->addParameter('clearingtype', 'cfg'); // In case cfg does not exist yet
+
+        $this->addParameter('add_paydata[action]', 'getsetup');
+
+        return $this->mockMerchantSetup();
+        // return $this->send();
+    }
+
+    protected function mockMerchantSetup()
+    {
+        $mode = $this->getParameter('mode');
+        if ($mode == 'test') {
+            $return = array(
+                'payment_clearingtype_active[KKE]' => true,
+                'payment_subtype_active[V]' => true,
+                'payment_subtype_active[M]' => true,
+                'payment_subtype_active[A]' => false,
+                'payment_subtype_active[D]' => false,
+                'payment_subtype_active[J]' => false,
+                'payment_subtype_active[O]' => false,
+                'payment_subtype_active[U]' => false,
+                'payment_subtype_active[B]' => false,
+            );
+        } else {
+            $return = array(
+                'payment_clearingtype_active[KKE]' => true,
+                'payment_subtype_active[V]' => true,
+                'payment_subtype_active[M]' => false,
+                'payment_subtype_active[A]' => false,
+                'payment_subtype_active[D]' => false,
+                'payment_subtype_active[J]' => false,
+                'payment_subtype_active[O]' => false,
+                'payment_subtype_active[U]' => false,
+                'payment_subtype_active[B]' => true,
+            );
+        }
+
+        return $return;
+    }
+
+
     /**
      * Sends request for receiving amazon addressdata
      *
@@ -3563,5 +3618,4 @@ class fcpoRequest extends oxSuperCfg {
 
         return $oDelivery->getBruttoPrice();
     }
-
 }

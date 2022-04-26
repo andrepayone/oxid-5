@@ -532,6 +532,10 @@ $aLang = array(
     'PAYONE Vorkasse' => 'PAYONE Vorkasse',
     'PAYONE WeChat Pay' => 'PAYONE WeChat Pay',
     'FCPO_KLARNA' => 'PAYONE Klarna Payments',
+    'FCPO_AUTOCONFIG_TYPE' => 'Automatisch konfigurieren',
+    'FCPO_AUTOCONFIG_TYPE_TEST' => 'Für Testumgebung',
+    'FCPO_AUTOCONFIG_TYPE_LIVE' => 'Für Liveumgebung',
+    'FCPO_HELP_AUTOCONFIG_TYPE' => 'Ihre verfügbaren Zahlarten werden anhand Ihrer obigen Anmeldedaten von Payone abgerufen und im passenden Modus automatisch konfiguriert.',
 );
 
 /*

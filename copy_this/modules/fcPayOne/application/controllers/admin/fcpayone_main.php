@@ -340,6 +340,16 @@ class fcpayone_main extends fcpayone_admindetails {
         $this->_fcpoLoadConfigs($sOxid);
     }
 
+    public function autoconfigsave() {
+        $sMode = $this->_oFcpoHelper->fcpoGetRequestParameter("sFCPOAutoConfigMode");
+        $oFcpoRequest = $this->_oFcpoHelper->getFactoryObject('fcporequest');
+
+        // first save merchant data, then request config from platform
+        $this->save();
+        $aResponse = $oFcpoRequest->sendRequestGetPayoneMerchantSetup($sMode);
+        print_r($aResponse);
+    }
+
     /**
      * Loads list of countries
      * 
