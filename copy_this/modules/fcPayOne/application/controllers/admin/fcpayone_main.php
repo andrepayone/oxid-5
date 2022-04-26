@@ -347,7 +347,30 @@ class fcpayone_main extends fcpayone_admindetails {
         // first save merchant data, then request config from platform
         $this->save();
         $aResponse = $oFcpoRequest->sendRequestGetPayoneMerchantSetup($sMode);
-        print_r($aResponse);
+        $this->saveAutoSetup($aResponse);
+    }
+
+    /**
+     * Saves received config from payone platform
+     * @todo validation!
+     * @param array $aConfig
+     * @return void
+     */
+    protected function saveAutoSetup($aConfig) {
+        $oConfig = $this->_oFcpoHelper->fcpoGetConfig();
+
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['payment_subtype_active[V]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOMastercardActivated', $aConfig['payment_subtype_active[M]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOAmexActivated', $aConfig['payment_subtype_active[A]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPODinersActivated', $aConfig['payment_subtype_active[D]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOJCBActivated', $aConfig['payment_subtype_active[J]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOMaestroIntActivated', $aConfig['payment_subtype_active[O]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOMaestroUKActivated', $aConfig['payment_subtype_active[U]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOCarteBleueActivated', $aConfig['payment_subtype_active[B]']);
+
+        //reload config after saving
+        $sOxid = $oConfig->getShopId();
+        $this->_fcpoLoadConfigs($sOxid);
     }
 
     /**
