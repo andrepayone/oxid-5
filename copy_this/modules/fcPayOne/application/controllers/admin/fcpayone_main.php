@@ -383,12 +383,15 @@ class fcpayone_main extends fcpayone_admindetails {
 
         // @todo: deactivate all payone payments
 
+        // activate all payments recognized as active on platform
         foreach ($aConfig as $aSubtypes) {
             foreach ($aSubtypes as $aPaymentConfig) {
                 $sPaymentId = $aPaymentConfig['paymentid'];
-                $oPayment->load($sPaymentId);
-                $oPayment->oxpayments__oxactive = new oxField($aPaymentConfig['active']);
-                $oPayment->save();
+                $blActive = (bool) $aPaymentConfig['active'];
+                if ($blActive && $oPayment->load($sPaymentId)) {
+                    $oPayment->oxpayments__oxactive = new oxField(true);
+                    $oPayment->save();
+                }
             }
         }
     }
