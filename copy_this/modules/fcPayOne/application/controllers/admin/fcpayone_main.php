@@ -359,13 +359,13 @@ class fcpayone_main extends fcpayone_admindetails {
         // save specific credit card subtypes
         $oConfig = $this->_oFcpoHelper->fcpoGetConfig();
         $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['V']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['M']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['A']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['D']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['J']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['O']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['U']['active']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['B']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOMastercardActivated', $aConfig['CC']['M']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOAmexActivated', $aConfig['CC']['A']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPODinersActivated', $aConfig['CC']['D']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOJCBActivated', $aConfig['CC']['J']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOMaestroIntActivated', $aConfig['CC']['O']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPODiscoverActivated', $aConfig['CC']['U']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOCarteBleueActivated', $aConfig['CC']['B']['active']);
 
         //reload config after saving
         $sOxid = $oConfig->getShopId();
