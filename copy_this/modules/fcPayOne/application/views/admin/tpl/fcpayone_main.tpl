@@ -83,15 +83,10 @@
             </dl>
             <dl>
                 <dt>
-                    <select name="sFCPOAutoConfigMode">
-                        <option value="test">[{oxmultilang ident="FCPO_AUTOCONFIG_TYPE_TEST"}]</option>
-                        <option value="live">[{oxmultilang ident="FCPO_AUTOCONFIG_TYPE_LIVE"}]</option>
-                    </select>
-                    <input type="submit" class="edittext" name="save" value="[{oxmultilang ident="FCPO_AUTOCONFIG_TYPE"}]" onClick="Javascript:document.myedit.fnc.value='autoconfigsave'" [{$readonly}]>
+                    <input type="submit" class="edittext" name="autoconfigsave" value="[{oxmultilang ident="FCPO_AUTOCONFIG_TYPE"}]" onClick="Javascript:document.myedit.fnc.value='autoconfigsave'" [{$readonly}]>
                     [{oxinputhelp ident="FCPO_HELP_AUTOCONFIG_TYPE"}]
                 </dt>
                 <dd>
-                    [{oxmultilang ident="FCPO_AUTOCONFIG_TYPE"}]
                 </dd>
                 <div class="spacer"></div>
             </dl>

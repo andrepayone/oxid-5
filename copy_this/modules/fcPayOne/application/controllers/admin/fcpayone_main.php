@@ -341,12 +341,11 @@ class fcpayone_main extends fcpayone_admindetails {
     }
 
     public function autoconfigsave() {
-        $sMode = $this->_oFcpoHelper->fcpoGetRequestParameter("sFCPOAutoConfigMode");
         $oFcpoRequest = $this->_oFcpoHelper->getFactoryObject('fcporequest');
 
         // first save merchant data, then request config from platform
         $this->save();
-        $aResponse = $oFcpoRequest->sendRequestGetPayoneMerchantSetup($sMode);
+        $aResponse = $oFcpoRequest->sendRequestGetPayoneMerchantSetup();
         $this->saveAutoSetup($aResponse);
     }
 
@@ -357,20 +356,41 @@ class fcpayone_main extends fcpayone_admindetails {
      * @return void
      */
     protected function saveAutoSetup($aConfig) {
+        // save specific credit card subtypes
         $oConfig = $this->_oFcpoHelper->fcpoGetConfig();
-
-        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['payment_subtype_active[V]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOMastercardActivated', $aConfig['payment_subtype_active[M]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOAmexActivated', $aConfig['payment_subtype_active[A]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPODinersActivated', $aConfig['payment_subtype_active[D]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOJCBActivated', $aConfig['payment_subtype_active[J]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOMaestroIntActivated', $aConfig['payment_subtype_active[O]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOMaestroUKActivated', $aConfig['payment_subtype_active[U]']);
-        $oConfig->saveShopConfVar("bool", 'blFCPOCarteBleueActivated', $aConfig['payment_subtype_active[B]']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['V']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['M']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['A']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['D']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['J']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['O']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['U']['active']);
+        $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['B']['active']);
 
         //reload config after saving
         $sOxid = $oConfig->getShopId();
         $this->_fcpoLoadConfigs($sOxid);
+
+        $this->resetPayoneActivePayments($aConfig);
+    }
+
+    /**
+     * Activate payone payments which are available by given platform-configuration
+     *
+     * @param $aConfig
+     */
+    protected function resetPayoneActivePayments($aConfig) {
+        $oPayment = $this->_oFcpoHelper->getFactoryObject('oxpayment');
+
+        foreach ($aConfig as $aSubtypes) {
+            foreach ($aSubtypes as $aPaymentConfig) {
+                $sPaymentId = $aPaymentConfig['paymentid'];
+                if($oPayment->load($sPaymentId)) {
+                    $oPayment->oxpayments__oxactive = new oxField('1');
+                    $oPayment->save();
+                }
+            }
+        }
     }
 
     /**

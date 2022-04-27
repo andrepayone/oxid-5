@@ -1897,56 +1897,129 @@ class fcpoRequest extends oxSuperCfg {
     /**
      * Requests payone merchant configuration
      *
-     * @param string
+     * @param void
      * @return array
      */
-    public function sendRequestGetPayoneMerchantSetup($mode) {
-        $oConfig = $this->_oFcpoHelper->fcpoGetConfig();
+    public function sendRequestGetPayoneMerchantSetup() {
+        $sResponse = $this->sendRequestConfigService();
 
-        $this->addParameter('request', 'genericpayment');
-        $this->addParameter('mode', $mode);
-        $this->addParameter('aid', $oConfig->getConfigParam('sFCPOSubAccountID')); //ID of PayOne Sub-Account
-
-        $this->addParameter('clearingtype', 'cfg'); // In case cfg does not exist yet
-
-        $this->addParameter('add_paydata[action]', 'getsetup');
-
-        return $this->mockMerchantSetup();
-        // return $this->send();
+        return $this->parseResponseConfigService($sResponse);
     }
 
-    protected function mockMerchantSetup()
-    {
-        $mode = $this->getParameter('mode');
-        if ($mode == 'test') {
-            $return = array(
-                'payment_clearingtype_active[KKE]' => true,
-                'payment_subtype_active[V]' => true,
-                'payment_subtype_active[M]' => true,
-                'payment_subtype_active[A]' => false,
-                'payment_subtype_active[D]' => false,
-                'payment_subtype_active[J]' => false,
-                'payment_subtype_active[O]' => false,
-                'payment_subtype_active[U]' => false,
-                'payment_subtype_active[B]' => false,
-            );
-        } else {
-            $return = array(
-                'payment_clearingtype_active[KKE]' => true,
-                'payment_subtype_active[V]' => true,
-                'payment_subtype_active[M]' => false,
-                'payment_subtype_active[A]' => false,
-                'payment_subtype_active[D]' => false,
-                'payment_subtype_active[J]' => false,
-                'payment_subtype_active[O]' => false,
-                'payment_subtype_active[U]' => false,
-                'payment_subtype_active[B]' => true,
-            );
+    /**
+     *
+     *
+     * @param $sResponse
+     * @return mixed
+     */
+    protected function parseResponseConfigService($sResponse) {
+        $aConfig = array(
+            'CC' => array(
+                'V' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'M' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'A' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'D' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'J' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'O' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'U' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+                'B' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
+            ),
+            'WLT' => array(
+                'PPE' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpopaypal_express'),
+            ),
+        );
+
+        $aResponse = json_decode($sResponse);
+        foreach ($aResponse as $aPayment) {
+            $clearingType = $aPayment['clearingType'];
+            $clearingSubType = $aPayment['clearingSubType'];
+            // activate payment
+            if (isset($aConfig[$clearingType][$clearingSubType])) {
+                $aConfig[$clearingType][$clearingSubType]['active'] = true;
+            }
         }
 
-        return $return;
+        return $aConfig;
     }
 
+    protected function sendRequestConfigService() {
+        $sResponseActivePayments = $this->sendRequestConfigServiceActivePayments();
+
+        // here details could be merged into a result...
+        $aActivePayments = json_decode($sResponseActivePayments);
+        foreach($aActivePayments as $aActivePayment) {
+            $sDetails = $this->sendRequestConfigServicePaymentDetails();
+            // merge details to build a complete result for automatic configuration
+        }
+        $sMergedResponse = $sResponseActivePayments;
+
+        return $sMergedResponse;
+    }
+
+    /**
+     * Sends request to config service for receiving list of active payments
+     *
+     * @return array
+     */
+    protected function sendRequestConfigServiceActivePayments() {
+        $sEndpoint = 'https://payone.paymentconfig.example';
+
+        $aRequestActivePaymentsUri = array(
+            'merchants',
+            $this->getParameter('mid'),
+            'portals',
+            $this->getParameter('pid'),
+            'payment-methods'
+        );
+
+        return $this->mockResponseConfigServiceActivePaymentMethods();
+    }
+
+    /**
+     * Simulates an expected response of active payment methods if CMCS-Gateway would be reality
+     * Example-Request
+     * https://payone.paymentconfig.example/onboarding/merchants/<mid>/portals/<pid>/payment-methods
+     *
+     * @return array
+     * @see https://confluence-de.usr.ingenico.loc/display/CMCS/6.1.2.1+Payment+Processing+Configuration+API
+     */
+    protected function mockResponseConfigServiceActivePaymentMethods()
+    {
+        $aResponse = array(
+            array(
+                'paymentMethodId' => 'somePaymentMethodId',
+                'group' => 'CARD',
+                'clearingType' => 'CC',
+                'clearingSubType' => 'V',
+                'legacyClearingType' => 'KKE',
+            ),
+            array(
+                'paymentMethodId' => 'somePaymentMethodId',
+                'group' => 'CARD',
+                'clearingType' => 'CC',
+                'clearingSubType' => 'M',
+                'legacyClearingType' => 'KKE',
+            ),
+        );
+
+        return json_encode($aResponse);
+    }
+
+    /**
+     * Sends request for details of a certain payment method
+     *
+     * @param $aActivePayment
+     */
+    protected function sendRequestConfigServicePaymentDetails($aActivePayment) {
+        return $this->mockResponseConfigServicePaymentDetails();
+    }
+
+    /**
+     * Dummy response of calling configuration details for a certain payment from CMCS
+     */
+    protected function mockResponseConfigServicePaymentDetails() {
+        return;
+    }
 
     /**
      * Sends request for receiving amazon addressdata
