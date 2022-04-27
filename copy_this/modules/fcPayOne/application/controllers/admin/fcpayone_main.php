@@ -356,6 +356,7 @@ class fcpayone_main extends fcpayone_admindetails {
      * @return void
      */
     protected function saveAutoSetup($aConfig) {
+        $this->resetPayoneActivePayments($aConfig);
         // save specific credit card subtypes
         $oConfig = $this->_oFcpoHelper->fcpoGetConfig();
         $oConfig->saveShopConfVar("bool", 'blFCPOVisaActivated', $aConfig['CC']['V']['active']);
@@ -370,8 +371,6 @@ class fcpayone_main extends fcpayone_admindetails {
         //reload config after saving
         $sOxid = $oConfig->getShopId();
         $this->_fcpoLoadConfigs($sOxid);
-
-        $this->resetPayoneActivePayments($aConfig);
     }
 
     /**
@@ -382,13 +381,14 @@ class fcpayone_main extends fcpayone_admindetails {
     protected function resetPayoneActivePayments($aConfig) {
         $oPayment = $this->_oFcpoHelper->getFactoryObject('oxpayment');
 
+        // @todo: deactivate all payone payments
+
         foreach ($aConfig as $aSubtypes) {
             foreach ($aSubtypes as $aPaymentConfig) {
                 $sPaymentId = $aPaymentConfig['paymentid'];
-                if($oPayment->load($sPaymentId)) {
-                    $oPayment->oxpayments__oxactive = new oxField($aPaymentConfig['active']);
-                    $oPayment->save();
-                }
+                $oPayment->load($sPaymentId);
+                $oPayment->oxpayments__oxactive = new oxField($aPaymentConfig['active']);
+                $oPayment->save();
             }
         }
     }
