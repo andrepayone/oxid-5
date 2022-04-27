@@ -386,7 +386,7 @@ class fcpayone_main extends fcpayone_admindetails {
             foreach ($aSubtypes as $aPaymentConfig) {
                 $sPaymentId = $aPaymentConfig['paymentid'];
                 if($oPayment->load($sPaymentId)) {
-                    $oPayment->oxpayments__oxactive = new oxField('1');
+                    $oPayment->oxpayments__oxactive = new oxField($aPaymentConfig['active']);
                     $oPayment->save();
                 }
             }

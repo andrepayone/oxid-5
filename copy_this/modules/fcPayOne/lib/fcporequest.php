@@ -1942,15 +1942,14 @@ class fcpoRequest extends oxSuperCfg {
     }
 
     protected function sendRequestConfigService() {
-        $sResponseActivePayments = $this->sendRequestConfigServiceActivePayments();
+        $aResponseActivePayments = $this->sendRequestConfigServiceActivePayments();
 
         // here details could be merged into a result...
-        $aActivePayments = json_decode($sResponseActivePayments);
-        foreach($aActivePayments as $aActivePayment) {
+        foreach($aResponseActivePayments as $aActivePayment) {
             $sDetails = $this->sendRequestConfigServicePaymentDetails($aActivePayment);
             // merge details to build a complete result for automatic configuration
         }
-        $sMergedResponse = $sResponseActivePayments;
+        $sMergedResponse = $aResponseActivePayments;
 
         return $sMergedResponse;
     }
@@ -1991,6 +1990,7 @@ class fcpoRequest extends oxSuperCfg {
                 'clearingType' => 'CC',
                 'clearingSubType' => 'V',
                 'legacyClearingType' => 'KKE',
+                'status' => 'TEST+LIVE',
             ),
             array(
                 'paymentMethodId' => 'somePaymentMethodId',
@@ -1998,6 +1998,15 @@ class fcpoRequest extends oxSuperCfg {
                 'clearingType' => 'CC',
                 'clearingSubType' => 'M',
                 'legacyClearingType' => 'KKE',
+                'status' => 'TEST',
+            ),
+            array(
+                'paymentMethodId' => 'somePaymentMethodId',
+                'group' => 'ALTERNATIVE_PAYMENT',
+                'clearingType' => 'WLT',
+                'clearingSubType' => 'PPE',
+                'legacyClearingType' => 'WLT',
+                'status' => 'DELETED',
             ),
         );
 
