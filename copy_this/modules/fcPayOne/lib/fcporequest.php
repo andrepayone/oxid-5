@@ -1901,9 +1901,9 @@ class fcpoRequest extends oxSuperCfg {
      * @return array
      */
     public function sendRequestGetPayoneMerchantSetup() {
-        $sResponse = $this->sendRequestConfigService();
+        $aResponse = $this->sendRequestConfigService();
 
-        return $this->parseResponseConfigService($sResponse);
+        return $this->parseResponseConfigService($aResponse);
     }
 
     /**
@@ -1912,7 +1912,7 @@ class fcpoRequest extends oxSuperCfg {
      * @param $sResponse
      * @return mixed
      */
-    protected function parseResponseConfigService($sResponse) {
+    protected function parseResponseConfigService($aResponse) {
         $aConfig = array(
             'CC' => array(
                 'V' => array('active' => false, 'mode' => 'test', 'paymentid' => 'fcpocreditcard'),
@@ -1929,7 +1929,6 @@ class fcpoRequest extends oxSuperCfg {
             ),
         );
 
-        $aResponse = json_decode($sResponse);
         foreach ($aResponse as $aPayment) {
             $clearingType = $aPayment['clearingType'];
             $clearingSubType = $aPayment['clearingSubType'];
@@ -1948,7 +1947,7 @@ class fcpoRequest extends oxSuperCfg {
         // here details could be merged into a result...
         $aActivePayments = json_decode($sResponseActivePayments);
         foreach($aActivePayments as $aActivePayment) {
-            $sDetails = $this->sendRequestConfigServicePaymentDetails();
+            $sDetails = $this->sendRequestConfigServicePaymentDetails($aActivePayment);
             // merge details to build a complete result for automatic configuration
         }
         $sMergedResponse = $sResponseActivePayments;
@@ -2002,7 +2001,7 @@ class fcpoRequest extends oxSuperCfg {
             ),
         );
 
-        return json_encode($aResponse);
+        return $aResponse;
     }
 
     /**
